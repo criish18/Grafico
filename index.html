@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gráfico de ingresos de ventas</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/Style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>REGISTRO DE INGRESOS POR AÑO</h1>
+    <form id="dataForm">
+      <label for="enero">Ingresos de Enero:</label>
+      <input type="number" id="enero" name="enero" required>
+      <label for="febrero">Ingresos de Febrero:</label>
+      <input type="number" id="febrero" name="febrero" required>
+  
+      <label for="marzo">Ingresos de Marzo:</label>
+      <input type="number" id="marzo" name="marzo" required>
+  
+      <label for="abril">Ingresos de Abril:</label>
+      <input type="number" id="abril" name="abril" required>
+  
+      <label for="mayo">Ingresos de Mayo:</label>
+      <input type="number" id="mayo" name="mayo" required>
+  
+      <label for="junio">Ingresos de Junio:</label>
+      <input type="number" id="junio" name="junio" required>
+  
+      <label for="julio">Ingresos de Julio:</label>
+      <input type="number" id="julio" name="julio" required>
+  
+      <label for="agosto">Ingresos de Agosto:</label>
+      <input type="number" id="agosto" name="agosto" required>
+  
+      <label for="septiembre">Ingresos de Septiembre:</label>
+      <input type="number" id="septiembre" name="septiembre" required>
+  
+      <label for="octubre">Ingresos de Octubre:</label>
+      <input type="number" id="octubre" name="octubre" required>
+  
+      <label for="noviembre">Ingresos de Noviembre:</label>
+      <input type="number" id="noviembre" name="noviembre" required>
+  
+      <label for="diciembre">Ingresos de Diciembre:</label>
+      <input type="number" id="diciembre" name="diciembre" required>
+  
+      <button type="submit">Generar gráfico</button>
+    </form>
+  
+    <canvas id="myChart"></canvas>
+  </div>
+  
+ 
+
+<script>
+  document.getElementById('dataForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var ingresos = {
+      labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+      datasets: [{
+        label: "Ingresos",
+        data: [
+          parseInt(document.getElementById('enero').value),
+          parseInt(document.getElementById('febrero').value),
+          parseInt(document.getElementById('marzo').value),
+          parseInt(document.getElementById('abril').value),
+          parseInt(document.getElementById('mayo').value),
+          parseInt(document.getElementById('junio').value),
+          parseInt(document.getElementById('julio').value),
+          parseInt(document.getElementById('agosto').value),
+          parseInt(document.getElementById('septiembre').value),
+          parseInt(document.getElementById('octubre').value),
+          parseInt(document.getElementById('noviembre').value),
+          parseInt(document.getElementById('diciembre').value)
+        ],
+        backgroundColor: "rgba(228, 225, 40, 0.2)",
+        borderColor: "rgb(204, 76, 37)",
+        borderWidth: 1
+      }]
+    };
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: ingresos
+    });
+  });
+</script>
+</body>
+</html>
